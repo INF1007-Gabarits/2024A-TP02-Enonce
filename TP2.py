@@ -21,7 +21,7 @@ bibliotheque  = dict()
 for c in collection:
     bibliotheque[c[-1]] = c[:-1]
     
-print(f' \n Bibliotheque initiale : {bibliotheque} \n')
+# print(f' \n Bibliotheque initiale : {bibliotheque} \n')
 
 ########################################################################################################## 
 # PARTIE 2 : Ajout d'une nouvelle collection à la bibliothèque
@@ -30,8 +30,17 @@ print(f' \n Bibliotheque initiale : {bibliotheque} \n')
 # TODO : Écrire votre code ici
 
 
+csv_nvCollection = open("nouvelle_collection.csv", newline='')
 
+nvCollection = csv.reader(csv_nvCollection)
 
+for c in nvCollection:
+    if c[-1] in bibliotheque:
+        print(f"Le livre {c[-1]} ---- {c[0]} par {c[-3]} ---- est déjà présent dans la bibliothèque")
+    else:
+        bibliotheque.update({c[-1] : c[:-1]})
+        print(f"Le livre {c[-1]} ---- {c[0]} par {c[-3]} ---- a été ajouté avec succès")
+        
 
 
 ########################################################################################################## 
