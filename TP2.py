@@ -29,7 +29,7 @@ for row in c :
     date = row[2]
     cote_rangement=row[3]
     bibliothèque[cote_rangement] = [titre,auteur,date] 
-print(f' \n Bibliotheque initiale : \n {bibliothèque} \n')
+print(f' \n Bibliotheque initiale : {bibliothèque} \n')
 
 
 
