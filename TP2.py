@@ -22,12 +22,14 @@ c = csv.reader(csvfile)
     #for row in range(c[1], c[462]) : 
             # cr = row[-4]
     #return cr
-
-for row  in c :
+bibliothèque = dict()
+for row in c :
     titre = row[0]
     auteur = row[1]
     date = row[2]
-    cote_rangement=row[3] 
+    cote_rangement=row[3]
+    bibliothèque[cote_rangement] = [titre,auteur,date] 
+print(f' \n Bibliotheque initiale : \n {bibliothèque} \n')
 
 
 
@@ -35,15 +37,15 @@ for row  in c :
     #titre = row[0]   
     #print(row)     
 
-bibliothèque = dict()
+#bibliothèque = dict()
 #cote = "allo"
 #cote_2 = "bonsoir"
-bibliothèque[cote_rangement] = [titre,auteur,date]
+#bibliothèque[cote_rangement] = [titre,auteur,date]
 #bibliothèque[cote_2] = 2
 
 
 
-print(f' \n Bibliotheque initiale : {bibliothèque} \n')
+#print(f' \n Bibliotheque initiale : {bibliothèque} \n')
 
 
 
