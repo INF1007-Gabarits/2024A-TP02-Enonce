@@ -1,8 +1,8 @@
 """
 TP2 : Système de gestion de livres pour une bibliothèque
 
-Groupe de laboratoire : XX
-Numéro d'équipe :  YY
+Groupe de laboratoire : 01
+Numéro d'équipe :  11
 Noms et matricules : Nom1 (Matricule1), Nom2 (Matricule2)
 """
 
@@ -11,7 +11,49 @@ Noms et matricules : Nom1 (Matricule1), Nom2 (Matricule2)
 ########################################################################################################## 
 
 # TODO : Écrire votre code ici
+import csv
 
+# open an existing file for reading -
+csvfile = open('C:\\Users\\Margot-Loane\\Desktop\\A24\\INF1007\\2024A-TP02-Enonce\\collection_bibliotheque.csv', newline='')
+c = csv.reader(csvfile)
+
+# make a new variable - c - for Python's CSV reader object -
+#def cote() :
+    #for row in range(c[1], c[462]) : 
+            # cr = row[-4]
+    #return cr
+
+for row  in c :
+    titre = row[0]
+    auteur = row[1]
+    date = row[2]
+    cote_rangement=row[3] 
+
+
+
+#for row in c :
+    #titre = row[0]   
+    #print(row)     
+
+bibliothèque = dict()
+#cote = "allo"
+#cote_2 = "bonsoir"
+bibliothèque[cote_rangement] = [titre,auteur,date]
+#bibliothèque[cote_2] = 2
+
+
+
+print(f' \n Bibliotheque initiale : {bibliothèque} \n')
+
+
+
+
+# read whatever you want from the reader object
+# print it or use it any way you like
+
+
+# save and close the file
+csvfile.close()
 
 
 
