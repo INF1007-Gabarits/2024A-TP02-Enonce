@@ -48,9 +48,23 @@ for c in nvCollection:
 ########################################################################################################## 
 
 # TODO : Écrire votre code ici
+toRemove = list()
+toAdd = dict()
+
+for b in bibliotheque:
+    if "Shakespeare" in bibliotheque[b][1] :
+        cote = "W"+b
+        toAdd.update({cote : bibliotheque[b]})
+        toRemove.append(b)
+        
+for i in toRemove:
+    bibliotheque.pop(i)
+    
+for i in toAdd:
+    bibliotheque.update({i : toAdd[i]})
 
 
-
+print(f" \n Bibliotheque avec modifications de cote : {bibliotheque} \n")
 
 
 
