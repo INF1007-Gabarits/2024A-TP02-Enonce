@@ -3,7 +3,7 @@ TP2 : Système de gestion de livres pour une bibliothèque
 
 Groupe de laboratoire : 01  
 Numéro d'équipe : 01
-Noms et matricules : Gaetan Lohier (Matricule1), Nom2 (Matricule2)
+Noms et matricules : Gaetan Lohier (Matricule1), Jad Charbachi (2381646)
 """
 import csv
 
