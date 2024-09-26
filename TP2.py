@@ -19,9 +19,9 @@ collection = csv.reader(csv_collection)
 bibliotheque  = dict()
 
 for c in collection:
-    bibliotheque[c[-1]] = c[:-1]
+    bibliotheque[c[-1]] = dict(titre = c[0], auteur = c[1], date_publication = c[2])
     
-# print(f' \n Bibliotheque initiale : {bibliotheque} \n')
+print(f' \n Bibliotheque initiale : {bibliotheque} \n')
 
 ########################################################################################################## 
 # PARTIE 2 : Ajout d'une nouvelle collection à la bibliothèque
@@ -38,7 +38,7 @@ for c in nvCollection:
     if c[-1] in bibliotheque:
         print(f"Le livre {c[-1]} ---- {c[0]} par {c[-3]} ---- est déjà présent dans la bibliothèque")
     else:
-        bibliotheque.update({c[-1] : c[:-1]})
+        bibliotheque.update({c[-1] : dict(titre = c[0], auteur = c[1], date_publication = c[2]) })
         print(f"Le livre {c[-1]} ---- {c[0]} par {c[-3]} ---- a été ajouté avec succès")
         
 
@@ -52,7 +52,7 @@ toRemove = list()
 toAdd = dict()
 
 for b in bibliotheque:
-    if "Shakespeare" in bibliotheque[b][1] :
+    if "Shakespeare" in bibliotheque[b]["auteur"] :
         cote = "W"+b
         toAdd.update({cote : bibliotheque[b]})
         toRemove.append(b)
@@ -74,6 +74,8 @@ print(f" \n Bibliotheque avec modifications de cote : {bibliotheque} \n")
 ########################################################################################################## 
 
 # TODO : Écrire votre code ici
+
+# bibliotheque.update({"emprunts" : "disponible"})
 
 
 
