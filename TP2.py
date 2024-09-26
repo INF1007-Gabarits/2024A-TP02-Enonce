@@ -6,6 +6,7 @@ Numéro d'équipe : 01
 Noms et matricules : Gaetan Lohier (2371634), Jad Charbachi (2381646)
 """
 import csv
+from datetime import datetime
 
 ########################################################################################################## 
 # PARTIE 1 : Création du système de gestion et ajout de la collection actuelle
@@ -99,10 +100,22 @@ print(f' \n Bibliotheque avec ajout des emprunts : {bibliotheque} \n')
 ########################################################################################################## 
 
 # TODO : Écrire votre code ici
+today = datetime.now()
+bibliotheque.update({"livres_perdus" : list()})
+bibliotheque.update({"frais_retard" : dict()})
 
-
-
-
+for e in bibliotheque["emprunts"]:
+    if bibliotheque["emprunts"][e]["etat"] == "emprunté":
+        date_emprunt = datetime.fromisoformat(bibliotheque["emprunts"][e]["date_emprunt"])
+        temps_emprunt = abs(date_emprunt - today)
+        if  (temps_emprunt.days >= 365):
+            bibliotheque["livres_perdus"].append(e)
+            
+        elif temps_emprunt.days >= 30:
+            frais = min(temps_emprunt.days * 2 , 100)
+            bibliotheque["frais_retard"].update({e : frais})
+            
+print(f' \n Bibliotheque avec ajout des retards et frais : {bibliotheque} \n')
 
 
 
