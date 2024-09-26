@@ -75,13 +75,25 @@ print(f" \n Bibliotheque avec modifications de cote : {bibliotheque} \n")
 
 # TODO : Écrire votre code ici
 
-# bibliotheque.update({"emprunts" : "disponible"})
+bibliotheque.update({"emprunts" : "disponible"})
 
+csv_emprunts = open("emprunts.csv", newline='')
 
+emprunts = csv.reader(csv_emprunts)
 
+bibliotheque.update({"emprunts" : dict()})
 
+for b in bibliotheque:
+    for e in emprunts:
+        if b == e[0]:
+            bibliotheque["emprunts"][b] = dict( etat = "emprunté", date_emprunt = e[1])
+            break
+        else:
+            bibliotheque["emprunts"][b] = dict( etat = "disponible")
+    
+    csv_emprunts.seek(0)
 
-
+print(f' \n Bibliotheque avec ajout des emprunts : {bibliotheque} \n')
 
 ########################################################################################################## 
 # PARTIE 5 : Livres en retard 
