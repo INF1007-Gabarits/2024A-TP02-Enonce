@@ -108,10 +108,10 @@ for e in bibliotheque["emprunts"]:
     if bibliotheque["emprunts"][e]["etat"] == "emprunté":
         date_emprunt = datetime.fromisoformat(bibliotheque["emprunts"][e]["date_emprunt"])
         temps_emprunt = abs(date_emprunt - today)
-        if  (temps_emprunt.days >= 365):
+        if  (temps_emprunt.days > 365):
             bibliotheque["livres_perdus"].append(e)
             
-        elif temps_emprunt.days >= 30:
+        elif temps_emprunt.days > 30:
             frais = min(temps_emprunt.days * 2 , 100)
             bibliotheque["frais_retard"].update({e : frais})
             
