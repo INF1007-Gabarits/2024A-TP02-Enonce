@@ -22,39 +22,17 @@ c = csv.reader(csvfile)
     #for row in range(c[1], c[462]) : 
             # cr = row[-4]
     #return cr
-bibliothèque = dict()
+bibliothèque = {}
+c = csv.DictReader(csvfile)
 for row in c :
-    titre = row[0]
-    auteur = row[1]
-    date = row[2]
-    cote_rangement=row[3]
+    titre = row["titre"]
+    auteur = row["auteur"]
+    date = row["date_publication"]
+    cote_rangement=row["cote_rangement"]
     bibliothèque[cote_rangement] = [titre,auteur,date] 
-print(f' \n Bibliotheque initiale : {bibliothèque} \n')
-
-
-
-#for row in c :
-    #titre = row[0]   
-    #print(row)     
-
-#bibliothèque = dict()
-#cote = "allo"
-#cote_2 = "bonsoir"
-#bibliothèque[cote_rangement] = [titre,auteur,date]
-#bibliothèque[cote_2] = 2
-
-
-
 #print(f' \n Bibliotheque initiale : {bibliothèque} \n')
-
-
-
-
-# read whatever you want from the reader object
-# print it or use it any way you like
-
-
-# save and close the file
+#cote = str(input())
+#print(bibliothèque[cote])
 csvfile.close()
 
 
@@ -66,6 +44,32 @@ csvfile.close()
 ########################################################################################################## 
 
 # TODO : Écrire votre code ici
+csvfile = open ("collection_bibliotheque.csv")
+csvfile_1 = open("nouvelle_collection.csv")
+
+c = csv.DictReader(csvfile)
+d = csv.DictReader(csvfile_1)
+
+new_bibliothèque = {}
+
+for row in d : 
+    new_cote = row["cote_rangement"]
+    if new_cote != cote_rangement : 
+        new_titre = row["titre"]
+        new_auteur = row["auteur"]
+        new_date = row["date_publication"]
+        new_bibliothèque[new_cote]= [new_titre, new_auteur, new_date]
+        print(f"Le livre {new_cote} ---- {new_titre} par {new_auteur} ---- a été ajouté avec succès")
+    else : 
+        print(f"Le livre {new_cote} ---- {new_titre} par {new_auteur} ---- est déjà présent dans la bibliothèque")
+bibliothèque.update(new_bibliothèque)
+new_cote = cote_rangement
+
+print(f' \n Bibliotheque totale : {bibliothèque} \n')
+
+
+
+
 
 
 
